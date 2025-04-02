@@ -6,7 +6,7 @@
 
 **CryptoWeather Nexus** is a powerful multi-page dashboard that combines **real-time weather updates**, **cryptocurrency tracking**, and **live notifications** via WebSockets. Built using **Next.js**, **React**, **Redux**, and **Tailwind CSS**, this app ensures a seamless and premium experience.
 
-🔗 **Live Demo:** [Smash here] (https://skybitx.vercel.app/)  
+🔗 **Live Demo:** [Smash here](https://skybitx.vercel.app/)  
 
 ---
 
