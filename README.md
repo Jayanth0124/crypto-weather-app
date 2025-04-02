@@ -1,13 +1,12 @@
 # 🚀 CryptoWeather Nexus
 
-![CryptoWeather Nexus](https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)
+![CryptoWeather Nexus](public/interface.png)
 
 ## 🌟 Overview
 
 **CryptoWeather Nexus** is a powerful multi-page dashboard that combines **real-time weather updates**, **cryptocurrency tracking**, and **live notifications** via WebSockets. Built using **Next.js**, **React**, **Redux**, and **Tailwind CSS**, this app ensures a seamless and premium experience.
 
-🔗 **Live Demo:** [Your Deployment URL](#)  
-📁 **GitHub Repository:** [Your Repo Link](#)
+🔗 **Live Demo:** [Smash here] (https://skybitx.vercel.app/)  
 
 ---
 
@@ -16,7 +15,6 @@
 ### 📍 Weather Section
 - 🌤 Live weather updates for multiple cities (New York, London, Tokyo).
 - 📊 Displays temperature, humidity, and conditions.
-- 📈 Weather history and charts for each city.
 
 ### 💰 Crypto Tracker
 - 🚀 Live tracking of Bitcoin, Ethereum, and other cryptocurrencies.
@@ -24,14 +22,6 @@
 - 🔴 WebSocket-based real-time price updates.
 - 📈 Historical pricing & extended metrics.
 
-### 📰 News & Alerts
-- 📰 Fetches top **crypto-related** news headlines.
-- 🔔 **Real-time alerts** for major crypto price changes & weather warnings.
-- 📡 Uses WebSockets for instant updates.
-
-### ❤️ Favorites Feature
-- ⭐ Users can **favorite** specific cities and cryptocurrencies.
-- 🔄 Persistent data storage for a personalized experience.
 
 ### 🎨 Premium UI & Responsive Design
 - 🌐 Beautiful, modern **UI built with Tailwind CSS**.
@@ -60,8 +50,8 @@
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/cryptoweather-nexus.git
-cd cryptoweather-nexus
+git clone https://github.com/Jayanth0124/crypto-weather-app.git
+cd crypto-weather-app
 ```
 
 ### 2️⃣ Install Dependencies
@@ -100,10 +90,10 @@ Easily deploy to **Vercel** or **Netlify**:
 vercel deploy
 ```
 
-### Deploy on **Netlify**
+### Deploy on **Github**
 
 ```bash
-netlify deploy
+github deploy
 ```
 
 ---
@@ -147,6 +137,6 @@ We welcome contributions! Follow these steps:
 ## 📩 Contact
 
 💬 **Author:** Donavalli Jayanth  
-📧 **Email:** [your-email@example.com](mailto:your-email@example.com)  
+📧 **Email:** [jayanthdonavalli0124@gmail.com](mailto:jayanthdonavalli0124@gmail.com)  
 🌐 **Portfolio:** [jayanth.xyz](https://www.jayanth.xyz)
 

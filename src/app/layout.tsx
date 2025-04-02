@@ -1,4 +1,7 @@
 import "./globals.css";
+import Image from 'next/image';
+
+<Image src="/path-to-image.jpg" alt="description" width={500} height={300} />
 
 export default function RootLayout({
   children,
