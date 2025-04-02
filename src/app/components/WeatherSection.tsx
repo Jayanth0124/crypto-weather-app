@@ -24,14 +24,18 @@ export default function WeatherSection() {
     setLoading(true);
     setError(false);
     try {
-      const response = await axios.get(`https://api.weatherapi.com/v1/current.json`, {
-        params: {
-          key: process.env.NEXT_PUBLIC_WEATHER_API_KEY, // Use your actual API key
-          q: cityName,
-          aqi: "no",
-        },
-      });
-      setWeather(response.data);
+      const response = await axios.get<WeatherData>( // ✅ Explicitly typing response
+        `https://api.weatherapi.com/v1/current.json`,
+        {
+          params: {
+            key: process.env.NEXT_PUBLIC_WEATHER_API_KEY, // Ensure this API key is valid
+            q: cityName,
+            aqi: "no",
+          },
+        }
+      );
+  
+      setWeather(response.data); // ✅ TypeScript now recognizes response.data as WeatherData
     } catch (error) {
       console.error("Error fetching weather data", error);
       setError(true);
@@ -40,6 +44,7 @@ export default function WeatherSection() {
       setLoading(false);
     }
   }
+  
 
   // Auto-Detect Location
   useEffect(() => {

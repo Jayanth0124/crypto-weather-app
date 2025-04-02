@@ -5,14 +5,17 @@ import { motion } from "framer-motion";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
-  LineElement,
   CategoryScale,
   LinearScale,
-  PointElement,
   Tooltip,
+  Legend,
+  LineController,
+  LineElement,
+  PointElement,
 } from "chart.js";
 
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip);
+ChartJS.register(CategoryScale, LinearScale, Tooltip, Legend, LineController, LineElement, PointElement);
+
 
 type CryptoData = {
   id: string;
@@ -33,7 +36,7 @@ export default function CryptoSection() {
   async function fetchCryptoData() {
     setLoading(true);
     try {
-      const response = await axios.get(
+      const response = await axios.get<CryptoData[]>(
         "https://api.coingecko.com/api/v3/coins/markets",
         {
           params: {
@@ -45,14 +48,16 @@ export default function CryptoSection() {
           },
         }
       );
-      setCryptoList(response.data);
+
+      setCryptoList(response.data); // ✅ Fix: Now response.data is correctly typed
       setTrendingCoins(response.data.slice(0, 3));
     } catch (error) {
-      console.error("Error fetching crypto data", error);
+      console.error("Error fetching crypto data:", error);
     } finally {
       setLoading(false);
     }
   }
+
 
   useEffect(() => {
     fetchCryptoData();
@@ -137,27 +142,32 @@ export default function CryptoSection() {
 
                 {/* Mini Line Chart */}
                 <div className="w-full sm:w-32 h-16 mt-4 sm:mt-0">
-                  <Line
-                    data={{
-                      labels: Array.from({ length: coin.sparkline_in_7d.price.length }, (_, i) => i),
-                      datasets: [
-                        {
-                          data: coin.sparkline_in_7d.price,
-                          borderColor: "rgb(75, 192, 192)",
-                          backgroundColor: "rgba(75, 192, 192, 0.2)",
-                          borderWidth: 2,
-                          tension: 0.2,
-                          pointRadius: 0,
-                        },
-                      ],
-                    }}
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      scales: { x: { display: false }, y: { display: false } },
-                    }}
-                  />
+                  {coin.sparkline_in_7d?.price?.length ? ( // ✅ Check if price array exists
+                    <Line
+                      data={{
+                        labels: Array.from({ length: coin.sparkline_in_7d.price.length }, (_, i) => i),
+                        datasets: [
+                          {
+                            data: coin.sparkline_in_7d.price,
+                            borderColor: "rgb(75, 192, 192)",
+                            backgroundColor: "rgba(75, 192, 192, 0.2)",
+                            borderWidth: 2,
+                            tension: 0.2,
+                            pointRadius: 0,
+                          },
+                        ],
+                      }}
+                      options={{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { x: { display: false }, y: { display: false } },
+                      }}
+                    />
+                  ) : (
+                    <p className="text-gray-400 text-sm text-center">No data</p> // ✅ Show fallback message
+                  )}
                 </div>
+
               </div>
             ))
           )}
